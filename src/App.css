@@ -1,0 +1,223 @@
+/* Two-Move Chess Styles */
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.app-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 3rem;
+}
+
+.app-header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.game-container {
+  display: flex;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.board-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Fix for dragged piece offset */
+.board-section > div {
+  position: relative;
+}
+
+.info-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.game-status {
+  margin-bottom: 2rem;
+}
+
+.current-turn h3 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.current-turn p {
+  color: #666;
+  margin: 0.25rem 0;
+}
+
+.bonus-moves {
+  color: #22c55e !important;
+  font-weight: 600;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.check-warning {
+  color: #ef4444 !important;
+  font-weight: 600;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.game-over {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 12px;
+  color: white;
+}
+
+.game-over h2 {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+.game-over p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.new-game-btn {
+  background: white;
+  color: #764ba2;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.new-game-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  background: #f8f8f8;
+}
+
+.move-history {
+  margin-bottom: 2rem;
+}
+
+.move-history h3 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.moves-list {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-family: 'Courier New', monospace;
+  line-height: 1.6;
+}
+
+.move {
+  margin-right: 0.5rem;
+  color: #495057;
+}
+
+.rules {
+  background: #e9ecef;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.rules h3 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.rules ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.rules li {
+  color: #495057;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Scrollbar styling */
+.moves-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.moves-list::-webkit-scrollbar-track {
+  background: #e9ecef;
+  border-radius: 4px;
+}
+
+.moves-list::-webkit-scrollbar-thumb {
+  background: #adb5bd;
+  border-radius: 4px;
+}
+
+.moves-list::-webkit-scrollbar-thumb:hover {
+  background: #868e96;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app {
+    padding: 1rem;
+  }
+
+  .app-header h1 {
+    font-size: 2rem;
+  }
+
+  .game-container {
+    gap: 1.5rem;
+  }
+
+  .board-section, .info-section {
+    padding: 1rem;
+  }
+
+  .board-section {
+    order: 2;
+  }
+
+  .info-section {
+    order: 1;
+    max-width: 100%;
+  }
+}
