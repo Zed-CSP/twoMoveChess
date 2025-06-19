@@ -224,11 +224,6 @@ function App() {
                   {gameState.game.inCheck() && (
                     <p className="check-warning">Check!</p>
                   )}
-                  {/* Debug info - remove in production */}
-                  <div style={{ fontSize: '0.8rem', color: '#999', marginTop: '0.5rem' }}>
-                    <p>Debug: movesThisTurn={gameState.movesThisTurn}, capturedLastMove={String(gameState.capturedLastMove)}</p>
-                    <p>chess.js turn: {gameState.game.turn()}, our currentPlayer: {gameState.currentPlayer}</p>
-                  </div>
                 </div>
                 <button onClick={resetGame} className="new-game-btn">New Game</button>
               </>

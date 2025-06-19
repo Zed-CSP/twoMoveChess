@@ -1,70 +1,81 @@
 # Deployment Guide for Two-Move Chess
 
-This guide will help you deploy the Two-Move Chess app to Vercel (free hosting).
+This guide will help you deploy the Two-Move Chess app to Render.com as a Static Site.
 
-## Option 1: Deploy with Vercel CLI (Recommended)
+## Deploy to Render
 
-1. Install Vercel CLI:
-```bash
-npm install -g vercel
-```
+### Prerequisites
+- A GitHub account with your code pushed to a repository
+- A Render account (free at [render.com](https://render.com))
 
-2. Run the deployment command:
-```bash
-vercel
-```
+### Step 1: Push to GitHub
 
-3. Follow the prompts:
-   - Login/create account when prompted
-   - Confirm project settings (defaults should work)
-   - Choose a project name or use the suggested one
+If you haven't already, push your code to GitHub:
 
-4. Your app will be deployed and you'll get a URL like: `https://your-project-name.vercel.app`
-
-## Option 2: Deploy via GitHub
-
-1. Push your code to a GitHub repository
-
-2. Go to [vercel.com](https://vercel.com)
-
-3. Sign up/login with your GitHub account
-
-4. Click "New Project"
-
-5. Import your GitHub repository
-
-6. Vercel will auto-detect the settings (Vite framework)
-
-7. Click "Deploy"
-
-## Option 3: Deploy via Git
-
-1. Initialize git if not already done:
 ```bash
 git init
 git add .
 git commit -m "Initial commit"
+git remote add origin <YOUR_GITHUB_REPO_URL>
+git push -u origin main
 ```
 
-2. Install Vercel CLI and deploy:
-```bash
-npx vercel --prod
-```
+### Step 2: Create a Static Site on Render
+
+1. Go to your [Render Dashboard](https://dashboard.render.com)
+2. Click **New +** → **Static Site**
+3. Connect your GitHub account if not already connected
+4. Select your `twomovechess` repository
+5. Configure the deployment settings:
+
+   - **Name**: `twomovechess` (or your preferred name)
+   - **Branch**: `main` (or your default branch)
+   - **Build Command**: `npm install && npm run build`
+   - **Publish Directory**: `dist`
+   - **Auto-Deploy**: Yes (for automatic deployments on git push)
+
+6. Click **Create Static Site**
+
+### Step 3: Wait for Deployment
+
+Render will:
+- Clone your repository
+- Run `npm install && npm run build`
+- Serve the `dist` folder as a static site
+- Provide you with a URL like: `https://twomovechess.onrender.com`
+
+### Client-Side Routing Support
+
+Since this is a single-page React app, you may need to configure redirects for client-side routing:
+
+1. After deployment, go to your service's **Redirects/Rewrites** tab
+2. Add a rewrite rule:
+   - **Source Path**: `/*`
+   - **Destination Path**: `/index.html`
+   - **Action**: Rewrite
+
+This ensures all routes are handled by your React app.
+
+## Alternative: Deploy to Vercel
+
+If you prefer Vercel over Render:
+
+1. Install Vercel CLI: `npm install -g vercel`
+2. Run: `vercel`
+3. Follow the prompts to deploy
 
 ## After Deployment
 
-- Your app will be available at the provided URL
-- Vercel provides automatic HTTPS
-- Future pushes to your main branch will trigger automatic deployments
-- You can add a custom domain later if desired
-
-## Environment Variables
-
-This app doesn't require any environment variables, so deployment is straightforward!
+- Your app will be live at the provided URL
+- Render provides automatic HTTPS
+- Future pushes to main will trigger automatic deployments
+- You can add a custom domain in the Settings tab
 
 ## Troubleshooting
 
-If you encounter issues:
-1. Make sure `npm run build` works locally
-2. Check that all dependencies are in `package.json` (not just devDependencies)
-3. Verify the `vercel.json` configuration is correct 
+If deployment fails:
+1. Check the build logs in Render dashboard
+2. Ensure `npm run build` works locally
+3. Verify all dependencies are in `package.json`
+4. Check that the `dist` folder is created after build
+5. Make sure you're not committing the `dist` folder (it should be in .gitignore) 
